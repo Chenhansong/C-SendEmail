@@ -13,9 +13,15 @@ namespace ConsoleApp1
     class Program
     {
         static void Main(string[] args)
-        {
+        {           
+            string sendAddress = "2290937298@qq.com";
+            string receiveAddress = "1281001690@qq.com";
+            string imgAddress = @"E:\IT\Exercise\C#SendEmail\ConsoleApp1\IMG\wallhaven-142977.jpg";
+            string text = "This is ChenHanSong mail test for fuck you 小鸡鸡";
+            string stmppawd = "sxzakvvdqxctebjc";
+
             TestEmail testEmail = new TestEmail();
-            testEmail.SendImgEmail("1281001690@qq.com", "946040144@qq.com", @"E:\IT\Exercise\C#SendEmail\ConsoleApp1\IMG\wallhaven-142977.jpg");
+            testEmail.SendImgEmail(sendAddress, receiveAddress, imgAddress, text, stmppawd);
 
             Console.ReadLine();
         }
@@ -29,7 +35,9 @@ namespace ConsoleApp1
         /// <param name="sendAddress">发送方地址</param>
         /// <param name="receiveAddress">接收方地址</param>
         /// <param name="imgAddress">图片地址</param>
-        public void SendImgEmail(string sendAddress, string receiveAddress, string imgAddress)
+        /// <param name="text">文本内容</param>
+        /// /// <param name="stmppawd">semp授权码</param>
+        public void SendImgEmail(string sendAddress, string receiveAddress, string imgAddress,string text,string stmppawd)
         {
             Bitmap bmp = new Bitmap(imgAddress);
 
@@ -46,11 +54,11 @@ namespace ConsoleApp1
             mm.Subject = "Test Email" + DateTime.Now;//标题
             mm.IsBodyHtml = true;
 
-            string mailBody = "<BODY style=\"MARGIN: 10px\"><DIV><p>This is ChenHanSong mail test</p> <IMG src=\"data:image/png;base64," + strbaser64 + "\"> </IMG></DIV></BODY> ";
+            string mailBody = "<BODY style=\"MARGIN: 10px\"><DIV><p>"+text+"</p> <IMG src=\"data:image/png;base64," + strbaser64 + "\"> </IMG></DIV></BODY> ";
             mm.Body = mailBody;
 
             SmtpClient sc = new SmtpClient("smtp.qq.com");//利用QQ邮箱发送
-            sc.Credentials = new NetworkCredential(sendAddress, "jeqvaqdsrjewbaed");//用户名和密码  密码应为开启stmp时给的授权码
+            sc.Credentials = new NetworkCredential(sendAddress, stmppawd);//用户名和密码  密码应为开启stmp时给的授权码
             try
             {
                 sc.Send(mm);
