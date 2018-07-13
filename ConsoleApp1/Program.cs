@@ -15,7 +15,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             TestEmail testEmail = new TestEmail();
-            testEmail.SendImgEmail("1281001690@qq.com", "2290937298@qq.com", @"E:\IT\Exercise\C#SendEmail\ConsoleApp1\IMG\wallhaven-142977.jpg");
+            testEmail.SendImgEmail("1281001690@qq.com", "946040144@qq.com", @"E:\IT\Exercise\C#SendEmail\ConsoleApp1\IMG\wallhaven-142977.jpg");
 
             Console.ReadLine();
         }
@@ -27,7 +27,7 @@ namespace ConsoleApp1
         /// 发送带有图片的邮件
         /// </summary>
         /// <param name="sendAddress">发送方地址</param>
-        /// <param name="receiveAddress">接受方地址</param>
+        /// <param name="receiveAddress">接收方地址</param>
         /// <param name="imgAddress">图片地址</param>
         public void SendImgEmail(string sendAddress, string receiveAddress, string imgAddress)
         {
@@ -46,7 +46,7 @@ namespace ConsoleApp1
             mm.Subject = "Test Email" + DateTime.Now;//标题
             mm.IsBodyHtml = true;
 
-            string mailBody = "<BODY style=\"MARGIN: 10px\"><DIV><p>This is ChenHanSong Mail Test</p> <IMG src=\"data:image/png;base64," + strbaser64 + "\"> </IMG></DIV></BODY> ";
+            string mailBody = "<BODY style=\"MARGIN: 10px\"><DIV><p>This is ChenHanSong mail test</p> <IMG src=\"data:image/png;base64," + strbaser64 + "\"> </IMG></DIV></BODY> ";
             mm.Body = mailBody;
 
             SmtpClient sc = new SmtpClient("smtp.qq.com");//利用QQ邮箱发送
