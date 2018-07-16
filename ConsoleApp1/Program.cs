@@ -15,9 +15,9 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {           
             string sendAddress = "2290937298@qq.com";
-            string receiveAddress = "1281001690@qq.com";
+            string receiveAddress = "511880741@qq.com";
             string imgAddress = @"E:\IT\Exercise\C#SendEmail\ConsoleApp1\IMG\wallhaven-142977.jpg";
-            string text = "This is ChenHanSong mail test for fuck you 小鸡鸡";
+            string text = "This is ChenHanSong mail test for fuck you  fuck";
             string stmppawd = "sxzakvvdqxctebjc";
 
             TestEmail testEmail = new TestEmail();
